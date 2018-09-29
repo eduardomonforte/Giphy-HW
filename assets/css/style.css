@@ -1,0 +1,12 @@
+body {
+    background-color: brown;
+    font-family: Helvetica, Arial, sans-serif;
+    color: antiquewhite;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 25px;
+}
