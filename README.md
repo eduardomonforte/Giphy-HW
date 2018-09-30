@@ -6,7 +6,8 @@
 
 GIPHY Search allows you to search the GIPHY database by clicking thematic buttons. Type your desired search term into the text box, click the "Add" button to turn the text into a new button, and click the button to search for GIFs related to your request.
 
-_Please note that the display GIFs are paused by default. To animate them, click them. By design, all displayed GIFs are rated G._
+_Please note that the displayed GIFs are paused by default. To animate them, click them._
+_By design, all displayed GIFs are rated G._
 
 ## Credits
 
