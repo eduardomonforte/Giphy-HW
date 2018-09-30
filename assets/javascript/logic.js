@@ -2,8 +2,8 @@
 
 $(document).ready(function() {
 
-    // This array contains all the default categories and will contain future ones.
-    var categories = ["obi-wan", "luke skywalker", "darth vader", "rey", "kylo ren"];
+    // This array contains all the default topics and will contain future ones.
+    var topics = ["obi-wan", "luke skywalker", "darth vader", "rey", "kylo ren"];
 
     // This calls the createButtons function as soon as the page loads.
     createButtons();
@@ -17,8 +17,8 @@ $(document).ready(function() {
         event.preventDefault();
         // ...a new variable stores the submitted value...
         var newCategory = $("#category-input").val().trim();
-        //...the new variable is pushed to the array containing the categories...
-        categories.push(newCategory);
+        //...the new variable is pushed to the array containing the topics...
+        topics.push(newCategory);
         //...and the buttons are created again.
         createButtons();
     
@@ -53,20 +53,20 @@ $(document).ready(function() {
     function createButtons() {
         // The button container is cleared so that the buttons don't stack every time the function is called.
         $("#buttons-container").empty();
-        // The for loop goes through all the strings inside the categories array.
-        for (var i = 0; i < categories.length; i++) {
+        // The for loop goes through all the strings inside the topics array.
+        for (var i = 0; i < topics.length; i++) {
             // JQuery dinamically creates new buttons.
             var button = $("<button>");
             // The new buttons get the class "button".
             button.attr("class", "button");
-            // If the strings inside the categories array have dashes, they are replaced with spaces.
-            categories[i] = categories[i].replace(/-/g, ' ');
+            // If the strings inside the topics array have dashes, they are replaced with spaces.
+            topics[i] = topics[i].replace(/-/g, ' ');
             // The new buttons get individual texts matching their strings.
-            button.text(categories[i].toLowerCase());
-            // If the strings inside the categories array have spaces, they are replaced with dashes. This is needed so that the query URL doesn't break.
-            categories[i] = categories[i].replace(/ /g, '-');
+            button.text(topics[i].toLowerCase());
+            // If the strings inside the topics array have spaces, they are replaced with dashes. This is needed so that the query URL doesn't break.
+            topics[i] = topics[i].replace(/ /g, '-');
             // The new buttons get individual ids matching their strings.
-            button.attr("id", categories[i]);
+            button.attr("id", topics[i]);
             // The buttons are appended to the button-container div.
             $("#buttons-container").append(button);
         }
@@ -102,9 +102,9 @@ $(document).ready(function() {
                 // We create new image elements for each gif.
                 var newGifs = $("<img>");
                 // We set the source for each gif using dot notation.
-                newGifs.attr("src", results[i].images.original.url);
-                // We define the default state of the gif as "animate"
-                newGifs.attr("data-state", "animate")
+                newGifs.attr("src", results[i].images.original_still.url);
+                // We define the default state of the gif as "still".
+                newGifs.attr("data-state", "still")
                 // We define the animated url of the gif inside of an attribute.
                 newGifs.attr("data-animate", results[i].images.original.url)
                 // We define the still url of the gif inside of an attribute.
