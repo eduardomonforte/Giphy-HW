@@ -12,7 +12,7 @@ $(document).ready(function() {
     console.log("API Key: " + apiKey);
 
     // This URL specifies the parameters included in the request.
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + newCategory.toLowerCase() + "&api_key=" + apiKey + "&limit=10&rating=g";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + newCategory.toLowerCase() + "&api_key=" + apiKey + "&limit=10&rating=g";
     console.log("Query URL: " + queryURL);
 
     $.ajax({
