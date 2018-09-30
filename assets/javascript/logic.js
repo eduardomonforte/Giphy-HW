@@ -2,15 +2,15 @@
 
 $(document).ready(function() {
 
-    // This array contains all default categories and will contain future ones.
-    var categories = ["obi-wan", "luke", "vader", "rey", "kylo"]
+    // This array contains all the default categories and will contain future ones.
+    var categories = ["obi-wan", "luke skywalker", "darth vader", "rey", "kylo ren"];
 
     // This calls the createButtons function as soon as the page loads.
     createButtons();
 
     // EVENT LISTENERS
 
-    // When the Add! button is clicked...
+    // When the "Add!" button is clicked...
     $("#add-category").on("click", function(event) {
 
         // ...the page won't reload...
@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     // When a gif is clicked, it is either paused or played.
     $(document).on("click", ".gif", function() {
-        // We store the current state in a variable.
+        // First, the current state is stored inside a variable.
         var state = $(this).attr("data-state");
         // If the state is "still"...
         if (state === "still") {
@@ -49,20 +49,24 @@ $(document).ready(function() {
 
     // FUNCTIONS
 
-    // This functions creates the buttons.
+    // This function creates the buttons.
     function createButtons() {
-        // The button container is cleared so that the buttons don't stack everytime the function is called.
+        // The button container is cleared so that the buttons don't stack every time the function is called.
         $("#buttons-container").empty();
         // The for loop goes through all the strings inside the categories array.
         for (var i = 0; i < categories.length; i++) {
-            // JQuery dinamically creates a button.
+            // JQuery dinamically creates new buttons.
             var button = $("<button>");
-            // The new buttons gets the class "button".
-            button.attr("class", "button")
-            // The new buttons get specific ids matching their strings.
-            button.attr("id", categories[i]);
-            // The buttons get specific texts matching their strings.
+            // The new buttons get the class "button".
+            button.attr("class", "button");
+            // If the strings inside the categories array have dashes, they are replaced with spaces.
+            categories[i] = categories[i].replace(/-/g, ' ');
+            // The new buttons get individual texts matching their strings.
             button.text(categories[i].toLowerCase());
+            // If the strings inside the categories array have spaces, they are replaced with dashes. This is needed so that the query URL doesn't break.
+            categories[i] = categories[i].replace(/ /g, '-');
+            // The new buttons get individual ids matching their strings.
+            button.attr("id", categories[i]);
             // The buttons are appended to the button-container div.
             $("#buttons-container").append(button);
         }
@@ -73,7 +77,7 @@ $(document).ready(function() {
         // A new variable is created, matching the id of the pressed button.
         var newCategory = $(this).attr("id");
         // This variable contains my personal API Key, provided by GIPHY.
-        var apiKey = "2Qh6FOtZdtxhTiBuIk5L5j7Tme5fGue8"
+        var apiKey = "2Qh6FOtZdtxhTiBuIk5L5j7Tme5fGue8";
         // The query URL is created dinamically. The chosen parameters are: q (search term), limit (amount of gifs) and rating (all G).
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + newCategory.toLowerCase() + "&api_key=" + apiKey + "&limit=10&rating=g";
         // The query URL is then logged into the console. Useful for debugging.
@@ -85,9 +89,9 @@ $(document).ready(function() {
         }).then(function(response) {
             // We log the response into the console. Useful for debugging.
             console.log(response);
-            // We clear the div containing the gifs so the new ones don't stack.
+            // We clear the div containing the gifs so that the new ones don't stack.
             $("#gifs-box").empty();
-            // We store the relevant data into a new variable for clarity and brevity.
+            // We store the relevant data inside a new variable for clarity and brevity.
             var results = response.data;
             // We loop through all the images in the array.
             for (var i = 0; i < results.length; i++) {
