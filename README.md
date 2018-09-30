@@ -1,6 +1,6 @@
 # Giphy-HW
 
-**Search for any G-Rated gif using the GIPHY API!**
+**Search for any G-Rated GIF using the GIPHY API!**
 
 ## What does this project do?
 
