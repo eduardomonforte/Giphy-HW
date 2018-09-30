@@ -5,7 +5,9 @@ $(document).ready(function() {
     // This array contains all default categories and will contain future ones.
     var categories = ["obi-wan", "luke", "darth vader", "rey", "kylo ren"]
 
-    var newCategory = $("#add-category").val().trim()
+    // This variable points to the value submitted on the form.
+    var newCategory = "placeholder"
+    // $("#category-input").val().trim()
 
     // My Person API Key provided by GIPHY
     var apiKey = "2Qh6FOtZdtxhTiBuIk5L5j7Tme5fGue8"
@@ -34,5 +36,17 @@ $(document).ready(function() {
             $("#buttons-container").append(button);
         }
     }
+
+    // Event Listeners
+
+    $("#add-category").on("click", function(event) {
+
+        event.preventDefault();
+
+        var newCategory = $("#category-input").val().trim();
+        categories.push(newCategory);
+        createButtons();
+
+    })
 
 });
